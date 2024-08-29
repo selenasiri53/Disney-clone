@@ -25,13 +25,6 @@ async function fetchFromTMDB(url: URL, cacheTime?: number) {
     return data;
 }
 
-// export async function getMovies(movieInfo: string) {
-//     const url = new URL(`https://api.themoviedb.org/3/movie/${movieInfo}`);
-//     const data = await fetchFromTMDB(url);
-
-//     return data.results;
-// }
-
 export async function getUpcomingMovies() {
     const url = new URL("https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1");
     const data = await fetchFromTMDB(url);
@@ -53,7 +46,6 @@ export async function getPopularMovies() {
     return data.results;
 }
 
-//
 export async function getDiscoverMovies(id?: string, keywords?: string) {
     const url = new URL("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc");
 

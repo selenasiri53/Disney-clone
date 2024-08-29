@@ -24,8 +24,6 @@ export default function SearchInput() {
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        //Do something with the form values
-        // This will be type-safe and validated
         console.log(values);
 
         router.push(`/search/${values.input}`);
@@ -49,5 +47,3 @@ export default function SearchInput() {
             </Form>
           )
 }
-
-// form docs: https://ui.shadcn.com/docs/components/form

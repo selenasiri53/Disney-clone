@@ -17,16 +17,15 @@ async function GenreDropdown() {
         method: "GET",
         headers: {
             accept: "application/json",
-            Authorization: `Bearer ${process.env.TMDB_API_KEY}`, // not accessible on the client's side, only on the server side
+            Authorization: `Bearer ${process.env.TMDB_API_KEY}`, 
         },
         next: {
-            revalidate: 60 * 60 * 24, // once every 24 hours it builds a fresh request (seconds * minutes * hours), rather than 10,000 dynamic requests
-            // useful if it doesnt need to be dynamic every single time
+            revalidate: 60 * 60 * 24, 
         }
     };
 
   const response = await fetch(url, options);
-  const data = (await response.json()) as Genres; // pass the data to the Genres type
+  const data = (await response.json()) as Genres; 
 
   console.log(data)
 
@@ -41,8 +40,6 @@ async function GenreDropdown() {
       <DropdownMenuContent>
         <DropdownMenuLabel>Select a Genre</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        
-        {/* 3rd */}
         {data.genres.map((genre) => (
           <DropdownMenuItem key={genre.id}>
             <Link href={`/genre/${genre.id}?genre=${genre.name}`}>{genre.name}</Link>
@@ -54,5 +51,3 @@ async function GenreDropdown() {
 }
 
 export default GenreDropdown
-
-// https://developer.themoviedb.org/docs/getting-started
